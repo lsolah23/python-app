@@ -14,8 +14,17 @@ jobs:
     steps:
 
       - name: Set commit ID
-        id: vars
-        run: echo "commit_id=${GITHUB_SHA::6}" >> "$GITHUB_OUTPUT"
+        run: echo "COMMIT_ID=${GITHUB_SHA::6}" >> "$GITHUB_ENV"
+
+      - name: Verify COMMIT_ID
+        run: |
+          echo "GITHUB_SHA = $GITHUB_SHA"
+          echo "COMMIT_ID shell = $COMMIT_ID"
+          echo "COMMIT_ID context = ${{ env.COMMIT_ID }}"
+
+    #  - name: Set commit ID
+    #    id: vars
+    #    run: echo "commit_id=${GITHUB_SHA::6}" >> "$GITHUB_OUTPUT"
 
       -
         name: Login to Docker Hub
@@ -29,5 +38,5 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           push: true
-          tags: leoherso/python-app:${{ steps.vars.outputs.commit_id }}
+          tags: leoherso/python-app:${{ env.commit_id }}
          
