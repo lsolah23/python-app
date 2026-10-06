@@ -38,5 +38,5 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           push: true
-          tags: leoherso/python-app:${{ env.commit_id }}
+          tags: leoherso/python-app:${{ env.COMMIT_ID }}
          
