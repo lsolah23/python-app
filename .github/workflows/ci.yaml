@@ -7,16 +7,15 @@ on:
     # - '.github/workflows/ci.yaml'
     branches:
       - main
-env:  
-  COMMIT_ID=$(git rev-parse --short $GITHUB_SHA)
-  
   
 jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
 
-      
+      - name: Set commit ID
+        id: vars
+        run: echo "commit_id=${GITHUB_SHA::6}" >> "$GITHUB_OUTPUT"
 
       -
         name: Login to Docker Hub
@@ -30,5 +29,5 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           push: true
-          tags: leoherso/python-app:${{ env.COMMIT_ID }}
+          tags: leoherso/python-app:${{ steps.vars.outputs.commit_id }}
          
