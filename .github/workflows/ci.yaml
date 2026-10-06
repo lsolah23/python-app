@@ -7,17 +7,16 @@ on:
     # - '.github/workflows/ci.yaml'
     branches:
       - main
-
+env:  
+  COMMIT_ID=$(git rev-parse --short "$GITHUB_SHA")
+  
+  
 jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
 
-      - name: Shorten commit id
-        id: commit
-        shell: bash
-        run: |
-          echo "commit_id=${GITHUB_SHA::6}" >> "$GITHUB_OUTPUT"
+      
 
       -
         name: Login to Docker Hub
