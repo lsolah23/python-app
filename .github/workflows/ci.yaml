@@ -16,12 +16,8 @@ jobs:
       - name: Set commit ID
         run: echo "COMMIT_ID=${GITHUB_SHA::6}" >> "$GITHUB_ENV"
 
-      - name: Verify COMMIT_ID
-        run: |
-          echo "GITHUB_SHA = $GITHUB_SHA"
-          echo "COMMIT_ID shell = $COMMIT_ID"
-          echo "COMMIT_ID context = ${{ env.COMMIT_ID }}"
 
+    #  Another option to set commit ID is to use the GITHUB_OUTPUT variable, but it is commented out in this workflow.    
     #  - name: Set commit ID
     #    id: vars
     #    run: echo "commit_id=${GITHUB_SHA::6}" >> "$GITHUB_OUTPUT"
@@ -39,4 +35,8 @@ jobs:
         with:
           push: true
           tags: leoherso/python-app:${{ env.COMMIT_ID }}
+          
+          # Another option to use the commit ID is to reference it 
+          # from steps outputs like this steps.vars.output.commit_id 
+          # ${{ steps.vars.outputs.commit_id }}
          
