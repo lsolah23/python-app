@@ -43,12 +43,19 @@ jobs:
     needs: ci
     steps:
     
-    
+      - name: Install argocd
+        shell: bash
+        run: | 
+          curl -ksSL -o argocd https://argocd-server.argocd/download/argocd-linux-amd64
+          chmod +x argocd 
+          mv ./argocd /usr/local/bin/argocd
+
       - name: Argocd app sync
         run: | 
+       
           argocd login https://argocd-server.argocd \ 
             --username admin --insecure \ 
             --grpc-web  \
             --password ${{ secrets.ARGOCD_PASSWORD }}  
-
+          argocd app sync pyton-app --grpc-web
  

@@ -10,7 +10,7 @@ def details():
         'time': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         'hostname': socket.gethostname(),
         'ip_address': socket.gethostbyname(socket.gethostname()),
-        'message': 'Hola, Your are doing great, Human!! :) '
+        'message': 'Hello, Your are doing great, Keep up the good work!!'
     })
 
 @app.route('/api/v1/healthz')
