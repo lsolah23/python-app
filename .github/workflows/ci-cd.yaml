@@ -1,4 +1,4 @@
-name: ci
+name: ci-cd
 
 on:
   push:
@@ -9,8 +9,8 @@ on:
       - main
   
 jobs:
-  docker:
-    runs-on: self-hosted
+  ci:
+    runs-on: ubuntu-latest
     steps:
 
       - name: Set commit ID
@@ -37,4 +37,22 @@ jobs:
           # Another option to use the commit ID is to reference it 
           # from steps outputs like this steps.vars.output.commit_id 
           # ${{ steps.vars.outputs.commit_id }}
-         
+  
+  cd:
+    runs-on: self-hosted
+    needs: ci
+    steps:
+    
+    
+      - name: Argocd app sync
+        run: | 
+          argocd login argocd-server.argocd \ 
+            --username admin --insecure \ 
+            --grpc-web  \
+            --password ${{ secrets.ARGOCD_PASSWORD }}  
+            
+#         argocd app sync python-app \
+#           --revision ${{ env.COMMIT_ID }} \
+#           --grpc-web
+
+ 
