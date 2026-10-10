@@ -50,11 +50,5 @@ jobs:
             --username admin --insecure \ 
             --grpc-web  \
             --password ${{ secrets.ARGOCD_PASSWORD }}  
-         
-
-            
-#         argocd app sync python-app \
-#           --revision ${{ env.COMMIT_ID }} \
-#           --grpc-web
 
  
