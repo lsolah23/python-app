@@ -50,7 +50,6 @@ jobs:
           chmod +x argocd 
           sudo mv ./argocd /usr/local/bin/argocd
            
-
       - name: Argocd app sync
         run: | 
        
