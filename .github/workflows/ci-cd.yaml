@@ -54,5 +54,5 @@ jobs:
         run: | 
        
           argocd login argocd-server.argocd --username admin --insecure --grpc-web --password ${{ secrets.ARGOCD_PASSWORD }}  
-          argocd app sync test-app-py --grpc-web
+          argocd app sync test-app-py
  
