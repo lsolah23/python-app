@@ -1,0 +1,13 @@
+apiVersion: v2
+
+name: app-py-helmchart
+
+description: Helm chart for test-app-py deployed in Kubernetes & ArgoCD
+
+type: application
+
+# Chart version  
+version: 0.1.0
+
+# App version 
+appVersion: "2.0.0"

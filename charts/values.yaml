@@ -1,0 +1,29 @@
+replicaCount: 1
+
+image:
+  repository: leoherso/python-app
+  tag: v2 
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 5000
+
+ingress:
+  enabled: true
+  className: nginx
+  host: pythonapp.test.local
+  path: /
+  pathType: Prefix
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+  limits:
+    cpu: 500m
+    memory: 256Mi
+
+
