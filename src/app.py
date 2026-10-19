@@ -10,7 +10,7 @@ def details():
         'time': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         'hostname': socket.gethostname(),
         'ip_address': socket.gethostbyname(socket.gethostname()),
-        'message': '!!! *** NOTICIA DE ULTIMA HORA - SALUDOS FROM CR UYUYUI BAJURA **** :) !!!'
+        'message': '!!! *** BUENAS NOTICIAS - SALUDOS DESDE CR -- UYUYUI BAJURA **** :) !!!'
     })
 
 @app.route('/api/v1/healthz')
@@ -23,4 +23,3 @@ if __name__ == ('__main__'):
 
     app.run(host="0.0.0.0", port=5000, debug=True)
 
-#-----------------------------------------------------------------------------
