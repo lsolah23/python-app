@@ -40,8 +40,8 @@ jobs:
           # Another option to use the commit ID is to reference it 
           # from steps outputs like this steps.vars.output.commit_id 
           # ${{ steps.vars.outputs.commit_id }}
-          
-#-----------------------------------------------------------------------------------
+
+#-----------------------------------------------------------------------------
   
   cd:
     runs-on: self-hosted
