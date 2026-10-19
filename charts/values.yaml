@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
   repository: leoherso/python-app
-  tag: f74053
+  tag: b621e4
   pullPolicy: IfNotPresent
 
 service:
